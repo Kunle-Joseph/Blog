@@ -93,7 +93,7 @@ export default function BlogPage() {
     try {
       setIsLoadingPosts(true);
       const { data: fetchedPosts, error } = await supabase
-        .from("posts")
+        .from("posts_anon")
         .select("*")
         .order("created_at", { ascending: false }) // This ensures newest posts come first
         .limit(50); // Optional: limit number of posts fetched
