@@ -97,18 +97,11 @@ export default function BlogPage() {
         .select("*")
         .order("created_at", { ascending: false }) // This ensures newest posts come first
         .limit(50); // Optional: limit number of posts fetched
-      const { data: fetchedAnonPosts, error: anonError } = await supabase
-        .from("posts_anon")
-        .select("*")
-        .order("created_at", { ascending: false }) // This ensures newest posts come first
-        .limit(50); // Optional: limit number of posts fetched
 
       if (error) throw error;
-      if (anonError) throw anonError;
 
-      const combinedPosts = [fetchedPosts, fetchedAnonPosts].flat();
       // Sort posts by date before setting state (additional safety check)
-      const sortedPosts = combinedPosts?.sort(
+      const sortedPosts = fetchedPosts?.sort(
         (a, b) =>
           new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
       );

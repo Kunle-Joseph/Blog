@@ -79,10 +79,11 @@ export function PostUpload({
       }
 
       // Validate file type
-      const validTypes = ["image/jpeg", "image/png", "image/gif", "image/heic"];
+      const validTypes = ["image/jpeg", "image/png", "image/gif", 
+        "image/heic", "image/heif", "image/jpg", "image/webp"];
       if (!validTypes.includes(compressedFile.type)) {
         throw new Error(
-          "Invalid file type. Only JPG, PNG, HEIC, and GIF are allowed"
+          "Invalid file type. Only JPG, PNG, HEIC, WEBP, and GIF are allowed"
         );
       }
 
